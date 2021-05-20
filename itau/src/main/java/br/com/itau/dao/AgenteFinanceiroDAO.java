@@ -12,4 +12,5 @@ public interface AgenteFinanceiroDAO extends CrudRepository<AgenteFinanceiro, In
 	@Query(value="SELECT TOP(10) AG.nome_agente as 'Agente_Financeiro', AG.volume_transacional as 'Volume_Transacional' from dashcards.MTB310_ag_financeiro AG ORDER BY AG.volume_transacional desc", 
 			nativeQuery=true)
 	List<AgenteFinanceiro> findByTopTen();
-}
+	
+;}
