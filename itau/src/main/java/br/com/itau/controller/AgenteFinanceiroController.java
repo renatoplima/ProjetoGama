@@ -41,7 +41,7 @@ public class AgenteFinanceiroController {
 	}
 	
 	// Retornando por nome
-	@GetMapping("/agentefinanceiro/{agente}")
+/*	@GetMapping("/agentefinanceiro/{agente}")
 	public ResponseEntity<List<AgenteFinanceiro>> getNomeAgenteFinanceiro(@PathVariable String agente){
 		List<AgenteFinanceiro> lista = dao.findByNomeAgenteFinanceiroLike("%"+agente+"%");
 		if(lista.size()==0) {
@@ -50,7 +50,7 @@ public class AgenteFinanceiroController {
 		
 		return ResponseEntity.ok(lista);
 	}
-	
+*/	
 	// Retornando por ID
 	@GetMapping("agentefinanceiro/{id}")
 	public ResponseEntity<AgenteFinanceiro> getArtista(@PathVariable int id){
