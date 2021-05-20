@@ -15,6 +15,6 @@ public interface AgenteFinanceiroDAO extends CrudRepository<AgenteFinanceiro, In
 			nativeQuery=true)
 	public List<AgenteFinanceiro> findByTopTen();
 	
-	List<AgenteFinanceiro> findByNomeAgenteFinanceiroLike(String agente);
+//	List<AgenteFinanceiro> findByNomeAgenteFinanceiroLike(String agente);
 	
 }
