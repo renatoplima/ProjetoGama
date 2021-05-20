@@ -19,9 +19,7 @@ function logar() {
         };
 
     }
-    
-
-  
+      
     var envelope = {
         method: "POST",
         body: JSON.stringify(usuario),
@@ -80,28 +78,23 @@ function comboparceiro() {
 
 function exibirparceiro() {
 
-    fetch("http://localhost:8080/parceiros/")
+    fetch("http://localhost:8080/topagentesfinanceiros/")
         .then(res => res.json())
         .then(res => {
             var resposta = "";
             var html = "";
             html += "<table  class='table' width='80%'>";
-            html += "<tr class='h5'><td>Música</td>";
-            html += "<td>Cadastro</td>";
-            html += "<td>Lançamento</td></tr>";
+            html += "<tr class='h5'><td>ID Agente</td>";
+            html += "<td>Nome</td>";
+            html += "<td>Volume Transacional</td></tr>";
 
 
-            for (contador = 0; contador < res.musicas.length; contador++) {
-                lancamento = "Não";
-                if (res.musicas[contador].lancamento == 1) {
-                    lancamento = "Sim";
-                }
+            for (contador = 0; contador < res.length; contador++) {
                 html += "<tr>";
-                html += "<td>" + res.musicas[contador].titulo + "</td>";
-                html += "<td>" + res.musicas[contador].cadastro + "</td>";
-                html += "<td>" + lancamento + "</td>";
+                html += "<td>" + res.id_agente[contador] + "</td>";
+                html += "<td>" + res.nome_agente[contador] + "</td>";
+                html += "<td>" + res.volume_transacional[contador] + "</td>";
                 html += "</tr>";
-
             }
 
 
