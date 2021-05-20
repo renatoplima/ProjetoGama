@@ -29,7 +29,7 @@ public class AgenteFinanceiro {
 	private double volume_transacional;
 	
 	@OneToMany(mappedBy="ag_financeiro", cascade=CascadeType.ALL)
-	@JsonIgnoreProperties("ag_financeiro")
+	@JsonIgnoreProperties("ag_financeiro_id_agente")
 	private List<Transacao> transacoes;
 	
 	

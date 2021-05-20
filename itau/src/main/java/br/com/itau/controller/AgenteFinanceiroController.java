@@ -24,13 +24,13 @@ public class AgenteFinanceiroController {
 	}
 	
 	@GetMapping("/agentesfinanceiros") 
-	public ResponseEntity<List<AgenteFinanceiro>> getAllAgentesFinanceiros(){
+	public ResponseEntity<List<AgenteFinanceiro>> getAllAgenteFinanceiro() {
 		try {
-			List<AgenteFinanceiro> listaAgentesFinanceiros = (List<AgenteFinanceiro>) dao.findAll();
-			if (listaAgentesFinanceiros.size() == 0) {
+			List<AgenteFinanceiro> listaAgenteFinanceiro = (List<AgenteFinanceiro>) dao.findAll();
+			if (listaAgenteFinanceiro.size() == 0) {
 				return ResponseEntity.status(404).build();
 			}
-			return ResponseEntity.ok(listaAgentesFinanceiros);
+			return ResponseEntity.ok(listaAgenteFinanceiro);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(403).build();
