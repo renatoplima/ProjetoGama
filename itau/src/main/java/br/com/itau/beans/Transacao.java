@@ -2,14 +2,47 @@ package br.com.itau.beans;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity // fala pro Spring Boot que essa classe possui uma tabela correspondente no DB
+@Table(name="MTB310_TRANSACTION")
 public class Transacao {
 	
+	@Id // Avisa o Spring Boot que esta coluna é a chave primária da tabela
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Identity => representa o auto incremento do DB
+	@Column(name="id_transacao")
 	private int id_transacao;
+	
+	@Column(name="data_hora")
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="dd/MM/yyyy", shape=JsonFormat.Shape.STRING)
 	private Date data_hora;
+	
+	@Column(name="dispositivo")
 	private int dispositivo;
+	
+	@Column(name="valor_solic")
 	private float valor_solic;
+	
+	@Column(name="valor_aut")
 	private float valor_aut;
+	
+	@Column(name="status")
 	private int status;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("transacoes")
 	private int ag_financeiro;
 	
 	public int getId_transacao() {
