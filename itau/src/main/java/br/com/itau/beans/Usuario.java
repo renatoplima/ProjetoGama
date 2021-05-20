@@ -1,5 +1,10 @@
 package br.com.itau.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Usuario {
 
 	private int id;
