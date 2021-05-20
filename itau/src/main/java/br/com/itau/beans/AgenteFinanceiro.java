@@ -17,70 +17,70 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="MTB310_ag_financeiro")
 public class AgenteFinanceiro {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_agente")
-	private int id_agente;
-	
-	@Column(name="nome_agente")
-	private String nome_agente;
-	
-	@Column(name="volume_transacional")
-	private double volume_transacional;
-	
-	@OneToMany(mappedBy="ag_financeiro", cascade=CascadeType.ALL)
-	@JsonIgnoreProperties("ag_financeiro_id_agente")
-	private List<Transacao> transacoes;
-	
-	
-	@Override
-	public String toString() {
-		return "AgenteFinanceiro [id_agente=" + id_agente + ", nome_agente=" + nome_agente + ", volume_transacional="
-				+ volume_transacional + ", transacoes=" + transacoes + "]";
-	}
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name="id_agente")
+        private int idAgente;
 
-	public AgenteFinanceiro(int id_agente, String nome_agente, double volume_transacional, List<Transacao> transacoes) {
-		super();
-		this.id_agente = id_agente;
-		this.nome_agente = nome_agente;
-		this.volume_transacional = volume_transacional;
-		this.transacoes = transacoes;
-	}
+        @Column(name="nome_agente")
+        private String nomeAgente;
 
-	public AgenteFinanceiro() {
-		super();
-	}
+        @Column(name="volume_transacional")
+        private double volumeTransacional;
 
-	public int getId_agente() {
-		return id_agente;
-	}
+        @OneToMany(mappedBy="ag_financeiro", cascade=CascadeType.ALL)
+        @JsonIgnoreProperties("ag_financeiro_idAgente")
+        private List<Transacao> transacoes;
 
-	public void setId_agente(int id_agente) {
-		this.id_agente = id_agente;
-	}
 
-	public String getNome_agente() {
-		return nome_agente;
-	}
+        @Override
+        public String toString() {
+                return "AgenteFinanceiro [idAgente=" + idAgente + ", nomeAgente=" + nomeAgente + ", volumeTransacional="
+                                + volumeTransacional + ", transacoes=" + transacoes + "]";
+        }
 
-	public void setNome_agente(String nome_agente) {
-		this.nome_agente = nome_agente;
-	}
+        public AgenteFinanceiro(int idAgente, String nomeAgente, double volumeTransacional, List<Transacao> transacoes) {
+                super();
+                this.idAgente = idAgente;
+                this.nomeAgente = nomeAgente;
+                this.volumeTransacional = volumeTransacional;
+                this.transacoes = transacoes;
+        }
 
-	public double getVolume_transacional() {
-		return volume_transacional;
-	}
+        public AgenteFinanceiro() {
+                super();
+        }
 
-	public void setVolume_transacional(double volume_transacional) {
-		this.volume_transacional = volume_transacional;
-	}
+        public int getidAgente() {
+                return idAgente;
+        }
 
-	public List<Transacao> getTransacoes() {
-		return transacoes;
-	}
+        public void setidAgente(int idAgente) {
+                this.idAgente = idAgente;
+        }
 
-	public void setTransacoes(List<Transacao> transacoes) {
-		this.transacoes = transacoes;
-	}
-	
+        public String getnomeAgente() {
+                return nomeAgente;
+        }
+
+        public void setnomeAgente(String nomeAgente) {
+                this.nomeAgente = nomeAgente;
+        }
+
+        public double getvolumeTransacional() {
+                return volumeTransacional;
+        }
+
+        public void setvolumeTransacional(double volumeTransacional) {
+                this.volumeTransacional = volumeTransacional;
+        }
+
+        public List<Transacao> getTransacoes() {
+                return transacoes;
+        }
+
+        public void setTransacoes(List<Transacao> transacoes) {
+                this.transacoes = transacoes;
+        }
+
 }
