@@ -13,4 +13,5 @@ public interface UsuarioDAO extends CrudRepository<Usuario, Integer>{
 	
 	public Usuario findByEmailAndSenha(String email, String senha);
 	
+	
 }
