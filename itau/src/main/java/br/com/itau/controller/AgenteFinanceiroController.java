@@ -20,14 +20,10 @@ public class AgenteFinanceiroController {
 	
 	@GetMapping("/topagentesfinanceiros")
 	public ResponseEntity<List<AgenteFinanceiro>> getTopAgentesFinanceiros(){
-		List<AgenteFinanceiro> resposta = dao.findByTopTen();
-		if(resposta==null) {
-			return ResponseEntity.status(404).build();
-		}
-		return ResponseEntity.ok(resposta);
+		return ResponseEntity.ok(dao.findByTopTen());
 	}
 	
-	@GetMapping("/agentesfinanceiros")
+	@GetMapping("/agentesfinanceiros") 
 	public ResponseEntity<List<AgenteFinanceiro>> getAllAgenteFinanceiro(){
 		try {
 			List<AgenteFinanceiro> listaAgenteFinanceiro = (List<AgenteFinanceiro>) dao.findAll();
@@ -40,5 +36,6 @@ public class AgenteFinanceiroController {
 			return ResponseEntity.status(403).build();
 		}
 	}
+	
 	
 }

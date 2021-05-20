@@ -9,8 +9,8 @@ import br.com.itau.beans.AgenteFinanceiro;
 
 public interface AgenteFinanceiroDAO extends CrudRepository<AgenteFinanceiro, Integer> {
 
-	@Query(value="SELECT TOP(10) AG.nome_agente as 'Agente_Financeiro', AG.volume_transacional as 'Volume_Transacional' from dashcards.MTB310_ag_financeiro AG ORDER BY AG.volume_transacional desc", 
+	@Query(value="select id_agente, nome_agente, volume_transacional from MTB310_ag_financeiro GROUP BY nome_agente ORDER BY volume_transacional desc LIMIT 10", 
 			nativeQuery=true)
-	List<AgenteFinanceiro> findByTopTen();
+	public List<AgenteFinanceiro> findByTopTen();
 	
 ;}
