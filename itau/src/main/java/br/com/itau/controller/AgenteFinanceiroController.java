@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.beans.AgenteFinanceiro;
@@ -18,11 +19,13 @@ public class AgenteFinanceiroController {
 	@Autowired
 	private AgenteFinanceiroDAO dao;
 	
+	// Retornando top 10
 	@GetMapping("/topagentesfinanceiros")
 	public ResponseEntity<List<AgenteFinanceiro>> getTopAgentesFinanceiros(){
 		return ResponseEntity.ok(dao.findByTopTen());
 	}
 	
+	// Retornando todos
 	@GetMapping("/agentesfinanceiros") 
 	public ResponseEntity<List<AgenteFinanceiro>> getAllAgenteFinanceiro() {
 		try {
@@ -37,5 +40,25 @@ public class AgenteFinanceiroController {
 		}
 	}
 	
+	// Retornando por nome
+	@GetMapping("/agentefinanceiro/{agente}")
+	public ResponseEntity<List<AgenteFinanceiro>> getNomeAgenteFinanceiro(@PathVariable String agente){
+		List<AgenteFinanceiro> lista = dao.findByNomeAgenteFinanceiroLike("%"+agente+"%");
+		if(lista.size()==0) {
+			return ResponseEntity.status(404).build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
+	// Retornando por ID
+	@GetMapping("agentefinanceiro/{id}")
+	public ResponseEntity<AgenteFinanceiro> getArtista(@PathVariable int id){
+		AgenteFinanceiro resposta = dao.findById(id).orElse(null);
+		if(resposta==null) {
+			return ResponseEntity.status(404).build();
+		}
+		return ResponseEntity.ok(resposta);
+	}
 	
 }
