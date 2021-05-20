@@ -19,7 +19,7 @@ public class Usuario {
 	@Column(name="nome", length=50)
 	private String nome;
 	
-	@Column(name="nome", length=10)
+	@Column(name="racf", length=10)
 	private String racf;
 	
 	@Column(name="email",length=70)
