@@ -1,12 +1,34 @@
 package br.com.itau.beans;
 
-public class Usuario {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="tb_usuario")
+public class Usuario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
+	
+	@Column(name="nome", length=50)
 	private String nome;
+	
+	@Column(name="nome", length=10)
 	private String racf;
+	
+	@Column(name="email",length=70)
 	private String email;
+	
+	@Column(name="senha",length=20)
 	private String senha;
+	
+	@Column(name="foto",length=100)
 	private String foto;
 	
 	public int getId() {
