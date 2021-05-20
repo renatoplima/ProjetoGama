@@ -1,11 +1,17 @@
 package br.com.itau.beans;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="MTB310_ag_financeiro")
@@ -21,6 +27,10 @@ public class AgenteFinanceiro {
 	
 	@Column(name="volume_transacional")
 	private double volume_transacional;
+	
+	@OneToMany(mappedBy="ag_financeiro", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("ag_financeiro")
+	private List<Transacao> transacoes;
 	
 	public int getId_agente() {
 		return id_agente;
