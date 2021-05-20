@@ -13,11 +13,11 @@ import br.com.itau.dao.TransacaoDAO;
 @CrossOrigin("*")
 public class TransacaoController {
 
-	@Autowired
-	private TransacaoDAO dao;
-	
-	@GetMapping("/transacao/{codagente}/{codstatus}")
-	public ResponseEntity<Integer> getTotalTransacoesAgente(@PathVariable int codagente, int codstatus){
-		return ResponseEntity.ok(dao.findByTotalTransacoesAgenteEStatus(codagente, codstatus));
-	}
+        @Autowired
+        private TransacaoDAO dao;
+
+        @GetMapping("/transacao/{codagente}/{codstatus}")
+        public ResponseEntity<Integer> getTotalTransacoesAgente(@PathVariable int codagente, @PathVariable int codstatus){
+                return ResponseEntity.ok(dao.findByTotalTransacoesAgenteEStatus(codagente, codstatus));
+        }
 }
