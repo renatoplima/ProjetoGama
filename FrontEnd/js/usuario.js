@@ -7,7 +7,7 @@ function logar() {
     }
     
     var ver = document.getElementById("txtEmail").value
-    if (ver.indexOf("@")){
+    if (ver.indexOf("@") != -1){
         var usuario = {
             email: document.getElementById("txtEmail").value,
             senha: document.getElementById("txtSenha").value
