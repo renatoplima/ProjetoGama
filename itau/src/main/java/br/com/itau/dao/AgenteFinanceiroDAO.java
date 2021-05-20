@@ -11,10 +11,9 @@ public interface AgenteFinanceiroDAO extends CrudRepository<AgenteFinanceiro, In
 
 	public List<AgenteFinanceiro> findAll();
 	
-	@Query(value="select id_agente, nome_agente, volume_transacional from MTB310_ag_financeiro GROUP BY nome_agente ORDER BY volume_transacional desc LIMIT 10", 
-			nativeQuery=true)
+	@Query(value="select id_agente, nome_agente, volume_transacional from MTB310_ag_financeiro GROUP BY nome_agente ORDER BY volume_transacional desc LIMIT 10", nativeQuery=true)
 	public List<AgenteFinanceiro> findByTopTen();
 	
-//	List<AgenteFinanceiro> findByNomeAgenteFinanceiroLike(String agente);
+//	public List<AgenteFinanceiro> findByNomeAgenteFinanceiroLike(String agente);
 	
 }
