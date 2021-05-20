@@ -109,9 +109,45 @@ function exibirparceiro() {
 
 }
 function filtrar(){
-    alert(document.getElementById("cmaParceiro").value);
-
-}
+    var cod=document.getElementById("cmaParceiro").value;
+    var html = "";
+    html += "<div class='input-group-prepend'>";
+    html += "                        <ul class='list-group'>";
+    html += "                            <h4>";
+    html += "                                <li class='list-group-item active' aria-current='true'";
+    html += "                                    style='border-radius: 10px; width: fit-content;'>Parceiro</li>";
+    html += "                            </h4>";
+    html += "                            <h5>";
+    html += "                                <li class='list-group-item'> Nome Parceiro / Volume Transacional</li><br>";
+    html += "                            </h5>";
+    html += "                            <h4>";
+    html += "                                <li class='list-group-item active' aria-current='true'";
+    html += "                                    style='border-radius: 10px; width: fit-content;'>Sucesso</li>";
+    html += "                            </h4>";
+    html += "                            <li class='list-group-item'>";
+    html += "                                <h3 id='sucesso' style='text-align: end;'></h3>";
+    html += "                            </li><br>";
+    html += "                            <h4>";
+    html += "                                <li class='list-group-item active' aria-current='true'";
+    html += "                                    style='border-radius: 10px; width: fit-content;'>Falhas</li>";
+    html += "                            </h4>";
+    html += "                            <li class='list-group-item'>";
+    html += "                                <h3 id='falha' style='text-align: end;'></h3>";
+    html += "                            </li><br>";
+    html += "                            <h4>";
+    html += "                                <li class='list-group-item active' aria-current='true'";
+    html += "                                    style='border-radius: 10px; width: fit-content;'>Fraudes</li>";
+    html += "                            </h4>";
+    html += "                            <li class='list-group-item'>";
+    html += "                                <h3 id='fraude' style='text-align: end;'></h3>";
+    html += "                            </li>";
+    html += "                        </ul>";
+    html += "                    </div>";
+    document.getElementById("geral").innerHTML = html;
+    exibirsucesso(cod);
+    exibirfalha(cod);
+    exibirfraude(cod);
+    }
 
 function alerta(msg){
     var html="";
@@ -134,18 +170,32 @@ function sair(){
 
 function exibirsucesso(cod){
     
-    fetch("http://localhost:8080/exibirsucesso/" + cod)
+    fetch("http://localhost:8080/transacao/" + cod + "/0")
     .then(res => res.json())
     .then(res => {
-        "<h3 style='text-align: end;'>" + res + "</h3>";
+        //"<h3 style='text-align: end;'>" + res + "</h3>";
+        document.getElementById("sucesso").innerHTML=res;
+    })
+
+    
+}
+
+function exibirfraude(cod){
+    
+    fetch("http://localhost:8080/transacao/" + cod + "/2")
+    .then(res => res.json())
+    .then(res => {
+       // "<h3 style='text-align: end;'>" + res + "</h3>";
+       document.getElementById("fraude").innerHTML=res;
     })
 }
 
 function exibirfalha(cod){
     
-    fetch("http://localhost:8080/exibirfalha/" + cod)
+    fetch("http://localhost:8080/transacao/" + cod + "/1")
     .then(res => res.json())
     .then(res => {
-        "<h3 style='text-align: end;'>" + res + "</h3>";
+        //"<h3 style='text-align: end;'>" + res + "</h3>";
+        document.getElementById("falha").innerHTML=res;
     })
 }
