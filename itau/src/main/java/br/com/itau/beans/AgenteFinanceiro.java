@@ -1,9 +1,25 @@
 package br.com.itau.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="MTB310_ag_financeiro")
 public class AgenteFinanceiro {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_agente")
 	private int id_agente;
+	
+	@Column(name="nome_agente")
 	private String nome_agente;
+	
+	@Column(name="volume_transacional")
 	private double volume_transacional;
 	
 	public int getId_agente() {
