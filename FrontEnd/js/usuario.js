@@ -53,6 +53,7 @@ function exibirusuario() {
         var userjson = JSON.parse(userstr);
         document.getElementById("nome").innerHTML=userjson.nome + " (" +  userjson.racf + ")";
         document.getElementById("foto").innerHTML = "<img src=../imagens/" + userjson.foto + " width='140' height='auto'>";
+        //alert("passou exibirusuario");
         exibirparceiro();
     }
 
@@ -66,8 +67,8 @@ function comboparceiro() {
             var resposta = "";
             for (contador = 0; contador < res.length; contador++) {
                 resposta +=
-                    "<option value='" + res[contador].id + "'>" +
-                    res[contador].nomeArtistico + "</option>";
+                    "<option value='" + res[contador].id_agente + "'>" +
+                    res[contador].nome_agente + "</option>";
             }
             document.getElementById("cmaParceiro").innerHTML = resposta;
         })
@@ -88,12 +89,11 @@ function exibirparceiro() {
             html += "<td>Nome</td>";
             html += "<td>Volume Transacional</td></tr>";
 
-
             for (contador = 0; contador < res.length; contador++) {
                 html += "<tr>";
-                html += "<td>" + res.id_agente[contador] + "</td>";
-                html += "<td>" + res.nome_agente[contador] + "</td>";
-                html += "<td>" + res.volume_transacional[contador] + "</td>";
+                html += "<td>" + res[contador].id_agente + "</td>";
+                html += "<td>" + res[contador].nome_agente + "</td>";
+                html += "<td>" + res[contador].volume_transacional + "</td>";
                 html += "</tr>";
             }
 
@@ -128,3 +128,24 @@ function sair(){
     window.localStorage.removeItem("userlogado");
     window.location="principal.html";
     }
+
+
+//_________________________________________________________________
+
+function exibirsucesso(cod){
+    
+    fetch("http://localhost:8080/exibirsucesso/" + cod)
+    .then(res => res.json())
+    .then(res => {
+        "<h3 style='text-align: end;'>" + res + "</h3>";
+    })
+}
+
+function exibirfalha(cod){
+    
+    fetch("http://localhost:8080/exibirfalha/" + cod)
+    .then(res => res.json())
+    .then(res => {
+        "<h3 style='text-align: end;'>" + res + "</h3>";
+    })
+}
