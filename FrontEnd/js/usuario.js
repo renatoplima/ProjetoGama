@@ -5,11 +5,23 @@ function logar() {
         alerta("O preenchimento dos campos E-mail e senha é obrigatório")
         return;
     }
-    var usuario = {
-        email: document.getElementById("txtEmail").value,
-        senha: document.getElementById("txtSenha").value
+    
+    var ver = document.getElementById("txtEmail").value
+    if (ver.indexOf("@")){
+        var usuario = {
+            email: document.getElementById("txtEmail").value,
+            senha: document.getElementById("txtSenha").value
+        };
+    }else{
+        var usuario = {
+            racf: document.getElementById("txtEmail").value,
+            senha: document.getElementById("txtSenha").value
+        };
 
-    };
+    }
+    
+
+  
     var envelope = {
         method: "POST",
         body: JSON.stringify(usuario),
@@ -42,7 +54,7 @@ function exibirusuario() {
     } else {
         var userjson = JSON.parse(userstr);
         document.getElementById("nome").innerHTML=userjson.nome + " (" +  userjson.racf + ")";
-        document.getElementById("foto").innerHTML = "<img src=imagens/" + userjson.foto + " width='140' height='auto'>";
+        document.getElementById("foto").innerHTML = "<img src=../imagens/" + userjson.foto + " width='140' height='auto'>";
         exibirparceiro();
     }
 
