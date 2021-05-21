@@ -64,7 +64,9 @@ function comboparceiro() {
     fetch("http://localhost:8080/agentes")
         .then(res => res.json())
         .then(res => {
+            
             var resposta = "";
+            resposta += "<option value='0'>Selecione um parceiro</option>";
             for (contador = 0; contador < res.length; contador++) {
                 resposta += "<option value='" + res[contador].idAgente + "'>" +
                     res[contador].nomeAgente + "</option>";
@@ -75,6 +77,9 @@ function comboparceiro() {
             alerta("Não foram encontrados parceiros para o combo")
         });
 }
+
+
+  formatter.format(res[contador].volumeTransacional);
 
 function exibirparceiro() {
 
@@ -88,11 +93,16 @@ function exibirparceiro() {
             html += "<td>Nome</td>";
             html += "<td>Volume Transacional</td></tr>";
 
+            var formatter = new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              });
+  
             for (contador = 0; contador < res.length; contador++) {
                 html += "<tr>";
                 html += "<td>" + res[contador].idAgente + "</td>";
                 html += "<td>" + res[contador].nomeAgente + "</td>";
-                html += "<td>" + res[contador].volumeTransacional + "</td>";
+                html += "<td>" + formatter.format(res[contador].volumeTransacional) + "</td>";
                 html += "</tr>";
             }
 
@@ -125,10 +135,16 @@ function carregarDash(){
     if (userstr == null) {
         window.location = "../html/login.html";
     }
+    var formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      });
+      
     var nomeparceiro = localStorage.getItem("nomeag")
     var transac = localStorage.getItem("transac")
     var idparceiro = localStorage.getItem("code")
-    document.getElementById('cmparceiro').innerHTML= nomeparceiro.replace(/"/g,"") + " / Transações: " + transac;
+    document.getElementById('cmparceiro').innerHTML= nomeparceiro.replace(/"/g,"");
+    document.getElementById('cmtransacoes').innerHTML= formatter.format(transac);
     exibirsucesso(idparceiro);
     exibirfalha(idparceiro);
     exibirfraude(idparceiro);
