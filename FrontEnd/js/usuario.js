@@ -128,7 +128,7 @@ function carregarDash(){
     var nomeparceiro = localStorage.getItem("nomeag")
     var transac = localStorage.getItem("transac")
     var idparceiro = localStorage.getItem("code")
-    document.getElementById('cmparceiro').innerHTML= nomeparceiro.replace(/"/g,"") + " / " + transac;
+    document.getElementById('cmparceiro').innerHTML= nomeparceiro.replace(/"/g,"") + " / Transações: " + transac;
     exibirsucesso(idparceiro);
     exibirfalha(idparceiro);
     exibirfraude(idparceiro);
