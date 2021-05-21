@@ -25,7 +25,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> logar(@RequestBody Usuario objeto){
 		List<Usuario> lista = (List<Usuario>) dao.findAll();
 		for (Usuario usuario : lista) {
-			if (usuario.getRacf().equals(objeto.getRacf()) && usuario.getSenha().equals(objeto.getSenha()) || usuario.getEmail().equals(objeto.getEmail()) && usuario.getSenha().equals(objeto.getSenha())) {
+			if ((usuario.getRacf().equals(objeto.getRacf()) || usuario.getEmail().equals(objeto.getEmail())) && usuario.getSenha().equals(objeto.getSenha())) {
 				return ResponseEntity.ok(usuario);
 			}
 		}
