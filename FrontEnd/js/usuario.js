@@ -16,8 +16,8 @@ function logar() {
         var usuario = {
             racf: document.getElementById("txtEmail").value,
             senha: document.getElementById("txtSenha").value
+            
         };
-
     }
       
     var envelope = {
@@ -37,7 +37,7 @@ function logar() {
 
         })
         .catch(err => {
-           alerta("Usuário e/ou senha inválido");
+           alerta("Usuário e/ou Senha inválido(s)");
         });
 
 
@@ -83,7 +83,7 @@ function exibirparceiro() {
         .then(res => {
             var resposta = "";
             var html = "";
-            html += "<table  class='table' width='80%'>";
+            html += "<table  class='table' width='100%'>";
             html += "<tr class='h5'><td>ID Agente</td>";
             html += "<td>Nome</td>";
             html += "<td>Volume Transacional</td></tr>";
